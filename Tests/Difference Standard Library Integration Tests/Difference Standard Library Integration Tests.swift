@@ -1,5 +1,5 @@
 import Cardinal
-import Carrier_Protocol
+import Carrier
 import Difference_Standard_Library_Integration
 import Testing
 

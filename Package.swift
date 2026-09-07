@@ -61,7 +61,7 @@ let package = Package(
                 .product(name: "Magnitude", package: "swift-magnitude"),
                 .product(name: "Cardinal", package: "swift-cardinal"),
                 .product(name: "Polarity", package: "swift-polarity"),
-                .product(name: "Carrier Protocol", package: "swift-carrier"),
+                .product(name: "Carrier", package: "swift-carrier"),
                 .product(name: "Tagged", package: "swift-tagged"),
                 .product(name: "Property", package: "swift-property"),
             ]
@@ -71,7 +71,7 @@ let package = Package(
             dependencies: [
                 .product(name: "Magnitude", package: "swift-magnitude"),
                 .target(name: "Difference"),
-                .product(name: "Carrier Protocol", package: "swift-carrier"),
+                .product(name: "Carrier", package: "swift-carrier"),
             ]
         ),
         .testTarget(
@@ -83,7 +83,7 @@ let package = Package(
                 .product(name: "Magnitude", package: "swift-magnitude"),
                 .product(name: "Property", package: "swift-property"),
                 .product(name: "Cardinal", package: "swift-cardinal"),
-                .product(name: "Carrier Protocol", package: "swift-carrier"),
+                .product(name: "Carrier", package: "swift-carrier"),
                 .product(name: "Polarity", package: "swift-polarity"),
                 .product(name: "Tagged", package: "swift-tagged"),
             ]
@@ -93,7 +93,7 @@ let package = Package(
             dependencies: [
                 .target(name: "Difference Standard Library Integration"),
                 .product(name: "Cardinal", package: "swift-cardinal"),
-                .product(name: "Carrier Protocol", package: "swift-carrier"),
+                .product(name: "Carrier", package: "swift-carrier"),
             ]
         ),
     ],
