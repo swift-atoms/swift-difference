@@ -6,4 +6,3 @@ extension Tagged where Underlying == Difference, Tag: ~Copyable & ~Escapable {
         self.init(_unchecked: Difference(value))
     }
 }
-

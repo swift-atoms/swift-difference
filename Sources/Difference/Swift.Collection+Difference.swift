@@ -1,7 +1,6 @@
 public import Carrier
-public import Difference
 
-extension Collection {
+extension Swift.Collection {
 
     @inlinable
     public func index(

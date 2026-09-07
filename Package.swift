@@ -13,8 +13,8 @@ let package = Package(
     ],
     products: [
         .library(name: "Difference", targets: ["Difference"]),
-        .library(name: "Difference Standard Library Integration", targets: ["Difference Standard Library Integration"]),
-        .library(name: "Difference Foundation Library Integration", targets: ["Difference Foundation Library Integration"]),
+
+        .library(name: "Difference Foundation Integration", targets: ["Difference Foundation Integration"]),
         .library(name: "Difference Test Support", targets: ["Difference Test Support"]),
     ],
     dependencies: [
@@ -66,22 +66,13 @@ let package = Package(
             ],
             path: "Sources/Difference"
         ),
+        
         .target(
-            name: "Difference Standard Library Integration",
-            dependencies: [
-                .product(name: "Magnitude", package: "swift-magnitude"),
-                .target(name: "Difference"),
-                .product(name: "Carrier", package: "swift-carrier"),
-            ],
-            path: "Sources/Difference Standard Library Integration"
-        ),
-        .target(
-            name: "Difference Foundation Library Integration",
+            name: "Difference Foundation Integration",
             dependencies: [
                 .target(name: "Difference"),
-                .target(name: "Difference Standard Library Integration"),
             ],
-            path: "Sources/Difference Foundation Library Integration"
+            path: "Sources/Difference Foundation Integration"
         ),
         .target(
             name: "Difference Test Support",
@@ -102,9 +93,8 @@ let package = Package(
                 .product(name: "Carrier", package: "swift-carrier"),
                 .product(name: "Polarity", package: "swift-polarity"),
                 .product(name: "Tagged", package: "swift-tagged"),
-                .target(name: "Difference Standard Library Integration"),
                 .target(name: "Difference Test Support"),
-                .target(name: "Difference Foundation Library Integration"),
+                .target(name: "Difference Foundation Integration"),
             ],
             path: "Tests/Difference Tests"
         ),

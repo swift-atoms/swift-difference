@@ -77,7 +77,6 @@ extension Property where Tag == Subtraction, Base == Difference {
     }
 }
 
-
 extension Difference {
 
     @inlinable

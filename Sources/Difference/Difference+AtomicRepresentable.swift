@@ -1,11 +1,23 @@
 public import Magnitude
 #if SYNCHRONIZATION_AVAILABLE
-    public import Cardinal
-    public import Difference
-    public import Polarity
-    public import Synchronization
+public import Cardinal
+#endif
 
-    /// Atomic layout: bit 0 is the negative sign and bits 1...UInt.bitWidth
+#if SYNCHRONIZATION_AVAILABLE
+public import Difference
+#endif
+
+#if SYNCHRONIZATION_AVAILABLE
+public import Polarity
+#endif
+
+#if SYNCHRONIZATION_AVAILABLE
+public import Synchronization
+#endif
+
+
+#if SYNCHRONIZATION_AVAILABLE
+/// Atomic layout: bit 0 is the negative sign and bits 1...UInt.bitWidth
     /// contain the complete unsigned magnitude. A zero magnitude decodes to the
     /// unique zero regardless of its sign bit.
     extension Difference: AtomicRepresentable {

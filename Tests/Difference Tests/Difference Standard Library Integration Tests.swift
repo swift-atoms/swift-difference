@@ -1,6 +1,6 @@
 import Cardinal
 import Carrier
-import Difference_Standard_Library_Integration
+import Difference
 import Testing
 
 private struct Offset: Carrier.`Protocol` {
