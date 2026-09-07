@@ -179,6 +179,24 @@ private struct Wrapped<Tag>: Carrier.`Protocol`, Equatable {
 
 extension `Difference Tests` {
 
+    @Test(arguments: [UInt.zero, 1, UInt(Int.max), UInt(Int.max) + 1, UInt.max])
+    func `count conversion retains its complete magnitude and domain`(value: UInt) {
+        let count = Tagged<Distance, Cardinal>(_unchecked: Cardinal(value))
+        let offset = Tagged<Distance, Difference>(count)
+
+        #expect(offset.underlying.magnitude.value == count.underlying)
+        #expect(offset.underlying.polarity == (value == 0 ? nil : .positive))
+    }
+
+    @Test
+    func `custom count carriers preserve noncopyable and nonescapable domains`() {
+        let count = Count<PhantomDomain>(Cardinal(UInt.max))
+        let offset = Tagged<PhantomDomain, Difference>(count)
+
+        #expect(offset.underlying.magnitude.value.rawValue == UInt.max)
+        #expect(offset.underlying.polarity == .positive)
+    }
+
     @Test
     func `custom carrier arithmetic preserves the wrapper`() throws {
         let a = Wrapped<Distance>(Difference(4))
@@ -222,4 +240,12 @@ extension `Difference Tests` {
             try maximum.add.exact(three)
         }
     }
+}
+
+private struct PhantomDomain: ~Copyable, ~Escapable {}
+
+private struct Count<Tag: ~Copyable & ~Escapable>: Carrier.`Protocol` {
+    typealias Domain = Tag
+    let underlying: Cardinal
+    init(_ underlying: Cardinal) { self.underlying = underlying }
 }

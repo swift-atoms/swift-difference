@@ -96,7 +96,8 @@ let package = Package(
                 .target(name: "Difference Test Support"),
                 .target(name: "Difference Foundation Integration"),
             ],
-            path: "Tests/Difference Tests"
+            path: "Tests/Difference Tests",
+            resources: [.copy("Fixtures")]
         ),
     ],
     swiftLanguageModes: [.v6]
