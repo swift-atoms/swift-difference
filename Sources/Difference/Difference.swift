@@ -2,20 +2,20 @@ public import Cardinal
 public import Polarity
 public import Magnitude
 
-/// A signed, discrete difference whose positive and negative ranges both span
-/// the complete `Cardinal` range.
+
+
 public struct Difference: Sendable {
 
-    /// The shared magnitude value specialized to whole steps; this alias adds no tag.
+
     public typealias Magnitude = Magnitude::Magnitude<Cardinal>
 
     private let _polarity: Polarity
 
     private let _magnitude: Magnitude
 
-    /// Creates a difference from any binary sign and magnitude.
-    ///
-    /// Both signs paired with a zero magnitude normalize to the unique zero.
+
+
+
     public init(polarity: Polarity, magnitude: Magnitude) {
         self._polarity = magnitude.value.rawValue == 0 ? .positive : polarity
         self._magnitude = magnitude
@@ -40,7 +40,7 @@ extension Difference {
     @inlinable
     public static var one: Self { .positive(Magnitude(Cardinal(1 as UInt))) }
 
-    /// The sign of a nonzero difference, or `nil` for zero.
+
     public var polarity: Polarity? {
         magnitude.value.rawValue == 0 ? nil : _polarity
     }
@@ -64,7 +64,7 @@ extension Difference {
         case unrepresentable
     }
 
-    /// Returns the exactly represented standard-library integer.
+
     @inlinable
     public func intValue() throws(Error) -> Int {
         switch polarity {
