@@ -11,7 +11,7 @@ import Tagged
 import Testing
 
 @Suite
-struct `Difference Tests` {
+struct `Differences preserve signed magnitude domains and exact arithmetic` {
 
     @Test
     func `binary constructors are total and normalize both signs of zero`() {
@@ -177,7 +177,7 @@ private struct Wrapped<Tag>: Carrier.`Protocol`, Equatable {
     init(_ underlying: Difference) { self.underlying = underlying }
 }
 
-extension `Difference Tests` {
+extension `Differences preserve signed magnitude domains and exact arithmetic` {
 
     @Test(arguments: [UInt.zero, 1, UInt(Int.max), UInt(Int.max) + 1, UInt.max])
     func `count conversion retains its complete magnitude and domain`(value: UInt) {

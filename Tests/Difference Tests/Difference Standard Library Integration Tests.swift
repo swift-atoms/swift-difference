@@ -9,7 +9,7 @@ private struct Offset: Carrier.`Protocol` {
 }
 
 @Suite
-struct `Difference Standard Library Integration Tests` {
+struct `Difference adapters preserve signed offsets and exact representation` {
 
     @Test
     func `exact Int conversion covers both boundaries`() throws {
