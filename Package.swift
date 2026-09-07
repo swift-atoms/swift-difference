@@ -13,10 +13,9 @@ let package = Package(
     ],
     products: [
         .library(name: "Difference", targets: ["Difference"]),
-        .library(
-            name: "Difference Standard Library Integration",
-            targets: ["Difference Standard Library Integration"]
-        ),
+        .library(name: "Difference Standard Library Integration", targets: ["Difference Standard Library Integration"]),
+        .library(name: "Difference Foundation Library Integration", targets: ["Difference Foundation Library Integration"]),
+        .library(name: "Difference Test Support", targets: ["Difference Test Support"]),
     ],
     dependencies: [
         .package(
@@ -64,7 +63,8 @@ let package = Package(
                 .product(name: "Carrier", package: "swift-carrier"),
                 .product(name: "Tagged", package: "swift-tagged"),
                 .product(name: "Property", package: "swift-property"),
-            ]
+            ],
+            path: "Sources/Difference"
         ),
         .target(
             name: "Difference Standard Library Integration",
@@ -72,7 +72,23 @@ let package = Package(
                 .product(name: "Magnitude", package: "swift-magnitude"),
                 .target(name: "Difference"),
                 .product(name: "Carrier", package: "swift-carrier"),
-            ]
+            ],
+            path: "Sources/Difference Standard Library Integration"
+        ),
+        .target(
+            name: "Difference Foundation Library Integration",
+            dependencies: [
+                .target(name: "Difference"),
+                .target(name: "Difference Standard Library Integration"),
+            ],
+            path: "Sources/Difference Foundation Library Integration"
+        ),
+        .target(
+            name: "Difference Test Support",
+            dependencies: [
+                .target(name: "Difference"),
+            ],
+            path: "Tests/Support"
         ),
         .testTarget(
             name: "Difference Tests",
@@ -86,22 +102,18 @@ let package = Package(
                 .product(name: "Carrier", package: "swift-carrier"),
                 .product(name: "Polarity", package: "swift-polarity"),
                 .product(name: "Tagged", package: "swift-tagged"),
-            ]
-        ),
-        .testTarget(
-            name: "Difference Standard Library Integration Tests",
-            dependencies: [
                 .target(name: "Difference Standard Library Integration"),
-                .product(name: "Cardinal", package: "swift-cardinal"),
-                .product(name: "Carrier", package: "swift-carrier"),
-            ]
+                .target(name: "Difference Test Support"),
+                .target(name: "Difference Foundation Library Integration"),
+            ],
+            path: "Tests/Difference Tests"
         ),
     ],
     swiftLanguageModes: [.v6]
 )
 
-for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
-    target.swiftSettings = (target.swiftSettings ?? []) + [
+for target in package.targets {
+    target.swiftSettings = [
         .strictMemorySafety(),
         .enableUpcomingFeature("ExistentialAny"),
         .enableUpcomingFeature("InternalImportsByDefault"),
@@ -109,9 +121,6 @@ for target in package.targets where ![.system, .binary, .plugin, .macro].contain
         .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
         .enableExperimentalFeature("Lifetimes"),
         .enableUpcomingFeature("InferIsolatedConformances"),
-        .define(
-            "SYNCHRONIZATION_AVAILABLE",
-            .when(platforms: [.macOS, .iOS, .tvOS, .watchOS, .visionOS, .linux, .windows])
-        ),
+        .define("SYNCHRONIZATION_AVAILABLE", .when(platforms: [.macOS, .iOS, .tvOS, .watchOS, .visionOS, .linux, .windows])),
     ]
 }
