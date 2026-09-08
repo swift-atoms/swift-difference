@@ -1,6 +1,6 @@
-public import Cardinal
-public import Polarity
-public import Magnitude
+import Cardinal
+import Polarity
+import Magnitude
 
 extension Difference: Swift.ExpressibleByIntegerLiteral {
 

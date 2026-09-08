@@ -4,10 +4,6 @@ public import Cardinal
 #endif
 
 #if SYNCHRONIZATION_AVAILABLE
-public import Difference
-#endif
-
-#if SYNCHRONIZATION_AVAILABLE
 public import Polarity
 #endif
 
