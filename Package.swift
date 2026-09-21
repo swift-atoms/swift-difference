@@ -17,6 +17,11 @@ let package = Package(
         .library(name: "Difference Foundation Integration", targets: ["Difference Foundation Integration"]),
         .library(name: "Difference Test Support", targets: ["Difference Test Support"]),
     ],
+    traits: [
+        .trait(name: "Hash", description: "Hash integration"),
+        .trait(name: "Tagged", description: "Tagged integration"),
+        .default(enabledTraits: ["Tagged", "Hash"]),
+    ],
     dependencies: [
         .package(
             url: "https://github.com/swift-atoms/swift-addition.git",
@@ -99,6 +104,12 @@ let package = Package(
             path: "Tests/Difference Tests",
             resources: [.copy("Fixtures")]
         ),
+        .testTarget(name: "Difference Checked Arithmetic Migration Tests", dependencies: [
+            .target(name: "Difference"),
+        ], path: "Tests/Difference Checked Arithmetic Migration Tests"),
+        .testTarget(name: "Difference Hash Migration Tests", dependencies: [
+            .target(name: "Difference"),
+        ], path: "Tests/Difference Hash Migration Tests"),
     ],
     swiftLanguageModes: [.v6]
 )
