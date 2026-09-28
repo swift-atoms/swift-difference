@@ -20,7 +20,6 @@ let package = Package(
     traits: [
         .trait(name: "Hash", description: "Hash integration"),
         .trait(name: "Tagged", description: "Tagged integration"),
-        .default(enabledTraits: ["Tagged", "Hash"]),
     ],
     dependencies: [
         .package(
