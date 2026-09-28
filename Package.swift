@@ -37,7 +37,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/swift-atoms/swift-cardinal.git",
-            branch: "main"
+            branch: "main", traits: ["Tagged"]
         ),
         .package(
             url: "https://github.com/swift-atoms/swift-polarity.git",
