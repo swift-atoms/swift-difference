@@ -4,7 +4,6 @@ public import Magnitude
 public import Tagged
 
 extension Tagged where Underlying == Cardinal, Tag: ~Copyable & ~Escapable {
-    /// Rejects negative offsets without narrowing or reinterpreting their magnitude.
     @inlinable
     public init(_ offset: Tagged<Tag, Difference>) throws(Cardinal.Error) {
         guard offset.underlying >= .zero else {
