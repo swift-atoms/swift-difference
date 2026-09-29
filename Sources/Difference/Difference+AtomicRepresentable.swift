@@ -1,4 +1,4 @@
-public import Magnitude
+import Magnitude
 #if SYNCHRONIZATION_AVAILABLE
 public import Cardinal
 #endif
