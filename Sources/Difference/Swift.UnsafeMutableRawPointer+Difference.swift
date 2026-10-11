@@ -1,6 +1,6 @@
 public import Carrier
 
-extension Swift.UnsafeMutableRawPointer {
+extension Swift::UnsafeMutableRawPointer {
 
     @inlinable
     public func advanced(by offset: some Carrier.`Protocol`<Difference>) -> Self {

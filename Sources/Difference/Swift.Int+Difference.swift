@@ -1,4 +1,4 @@
-extension Swift.Int {
+extension Swift::Int {
 
     @inlinable
     public init?(exactly difference: Difference) {
@@ -12,7 +12,7 @@ extension Swift.Int {
 
 public import Carrier
 
-extension Swift.Int {
+extension Swift::Int {
     @inlinable
     public init?<D: Carrier.`Protocol`>(exactly displacement: D)
     where D.Underlying == Difference {

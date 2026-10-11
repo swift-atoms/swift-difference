@@ -2,7 +2,7 @@ public import Cardinal
 import Polarity
 public import Magnitude
 
-extension Difference: Swift.Equatable, Swift.Hashable {
+extension Difference: Swift::Equatable, Swift::Hashable {
 
     @inlinable
     public static func == (lhs: Self, rhs: Self) -> Bool {

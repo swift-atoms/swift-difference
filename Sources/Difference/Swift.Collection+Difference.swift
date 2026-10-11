@@ -1,6 +1,6 @@
 public import Carrier
 
-extension Swift.Collection {
+extension Swift::Collection {
 
     @inlinable
     public func index(

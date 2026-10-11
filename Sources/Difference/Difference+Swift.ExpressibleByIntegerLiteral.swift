@@ -2,7 +2,7 @@ import Cardinal
 import Polarity
 import Magnitude
 
-extension Difference: Swift.ExpressibleByIntegerLiteral {
+extension Difference: Swift::ExpressibleByIntegerLiteral {
 
     @_disfavoredOverload
     @inlinable

@@ -3,7 +3,7 @@ import Polarity
 import Magnitude
 
 #if !hasFeature(Embedded)
-extension Difference: Swift.Codable {
+extension Difference: Swift::Codable {
 
         private enum CodingKeys: String, CodingKey {
             case polarity

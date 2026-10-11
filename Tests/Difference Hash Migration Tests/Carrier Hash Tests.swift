@@ -15,7 +15,7 @@ struct `Affine Hash Tests` {
 
 }
 
-private func hash<T: Swift.Hashable>(_ value: borrowing T) -> Int {
+private func hash<T: Swift::Hashable>(_ value: borrowing T) -> Int {
     value.hashValue
 }
 

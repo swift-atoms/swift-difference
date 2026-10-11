@@ -70,13 +70,13 @@ struct `Differences preserve signed magnitude domains and exact arithmetic` {
         let signedZero = EncodedDifference(polarity: .negative, magnitude: 0)
         let unsignedNonzero = EncodedDifference(polarity: nil, magnitude: 1)
 
-        #expect(throws: (any Swift.Error).self) {
+        #expect(throws: (any Swift::Error).self) {
             try JSONDecoder().decode(
                 Difference.self,
                 from: JSONEncoder().encode(signedZero)
             )
         }
-        #expect(throws: (any Swift.Error).self) {
+        #expect(throws: (any Swift::Error).self) {
             try JSONDecoder().decode(
                 Difference.self,
                 from: JSONEncoder().encode(unsignedNonzero)
@@ -172,9 +172,12 @@ private func absolute(_ value: Int128) -> Int128 {
 private enum Distance {}
 
 private struct Wrapped<Tag>: Carrier.`Protocol`, Equatable {
-    typealias Domain = Tag
     let underlying: Difference
     init(_ underlying: Difference) { self.underlying = underlying }
+}
+
+extension Wrapped {
+    typealias Domain = Tag
 }
 
 extension `Differences preserve signed magnitude domains and exact arithmetic` {
@@ -245,7 +248,10 @@ extension `Differences preserve signed magnitude domains and exact arithmetic` {
 private struct PhantomDomain: ~Copyable, ~Escapable {}
 
 private struct Count<Tag: ~Copyable & ~Escapable>: Carrier.`Protocol` {
-    typealias Domain = Tag
     let underlying: Cardinal
     init(_ underlying: Cardinal) { self.underlying = underlying }
+}
+
+extension Count where Tag: ~Copyable & ~Escapable {
+    typealias Domain = Tag
 }

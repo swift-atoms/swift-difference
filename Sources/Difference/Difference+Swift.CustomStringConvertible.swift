@@ -2,7 +2,7 @@ import Cardinal
 import Polarity
 import Magnitude
 
-extension Difference: Swift.CustomStringConvertible {
+extension Difference: Swift::CustomStringConvertible {
 
     public var description: String {
         switch polarity {

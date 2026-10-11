@@ -68,7 +68,10 @@ let package = Package(
                 .product(name: "Tagged", package: "swift-tagged"),
                 .product(name: "Property", package: "swift-property"),
             ],
-            path: "Sources/Difference"
+            path: "Sources/Difference",
+            swiftSettings: [
+                .define("SYNCHRONIZATION_AVAILABLE", .when(platforms: [.macOS, .iOS, .tvOS, .watchOS, .visionOS, .linux, .windows])),
+            ]
         ),
         
         .target(
@@ -98,10 +101,12 @@ let package = Package(
                 .product(name: "Polarity", package: "swift-polarity"),
                 .product(name: "Tagged", package: "swift-tagged"),
                 .target(name: "Difference Test Support"),
-                .target(name: "Difference Foundation Integration"),
             ],
             path: "Tests/Difference Tests",
-            resources: [.copy("Fixtures")]
+            resources: [.copy("Fixtures")],
+            swiftSettings: [
+                .define("SYNCHRONIZATION_AVAILABLE", .when(platforms: [.macOS, .iOS, .tvOS, .watchOS, .visionOS, .linux, .windows])),
+            ]
         ),
         .testTarget(name: "Difference Checked Arithmetic Migration Tests", dependencies: [
             .target(name: "Difference"),
@@ -113,7 +118,7 @@ let package = Package(
     swiftLanguageModes: [.v6]
 )
 
-for target in package.targets where ![.system, .binary, .plugin].contains(target.type) {
+for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
     target.swiftSettings = (target.swiftSettings ?? []) + [
         .strictMemorySafety(),
         .enableUpcomingFeature("ExistentialAny"),
@@ -122,7 +127,6 @@ for target in package.targets where ![.system, .binary, .plugin].contains(target
         .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
         .enableUpcomingFeature("InferIsolatedConformances"),
         .enableExperimentalFeature("Lifetimes"),
-        .define("SYNCHRONIZATION_AVAILABLE", .when(platforms: [.macOS, .iOS, .tvOS, .watchOS, .visionOS, .linux, .windows])),
         .treatAllWarnings(as: .error),
     ]
 }

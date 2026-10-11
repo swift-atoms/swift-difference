@@ -5,21 +5,18 @@ public import Magnitude
 
 
 public struct Difference: Sendable {
-
-
-    public typealias Magnitude = Magnitude::Magnitude<Cardinal>
-
     private let _polarity: Polarity
 
     private let _magnitude: Magnitude
-
-
-
 
     public init(polarity: Polarity, magnitude: Magnitude) {
         self._polarity = magnitude.value.rawValue == 0 ? .positive : polarity
         self._magnitude = magnitude
     }
+}
+
+extension Difference {
+    public typealias Magnitude = Magnitude::Magnitude<Cardinal>
 }
 
 extension Difference {
@@ -59,7 +56,7 @@ extension Difference {
 
 extension Difference {
 
-    public enum Error: Swift.Error, Hashable, Sendable {
+    public enum Error: Swift::Error, Hashable, Sendable {
         case overflow
         case unrepresentable
     }

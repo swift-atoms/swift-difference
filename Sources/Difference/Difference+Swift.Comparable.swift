@@ -2,7 +2,7 @@ public import Cardinal
 import Polarity
 public import Magnitude
 
-extension Difference: Swift.Comparable {
+extension Difference: Swift::Comparable {
 
     @inlinable
     public static func < (lhs: Self, rhs: Self) -> Bool {
