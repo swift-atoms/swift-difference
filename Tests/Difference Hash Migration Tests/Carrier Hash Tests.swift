@@ -1,4 +1,3 @@
-#if Hash
 import Difference
 import Testing
 
@@ -19,4 +18,3 @@ private func hash<T: Swift::Hashable>(_ value: borrowing T) -> Int {
     value.hashValue
 }
 
-#endif

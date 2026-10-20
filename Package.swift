@@ -18,7 +18,6 @@ let package = Package(
         .library(name: "Difference Test Support", targets: ["Difference Test Support"]),
     ],
     traits: [
-        .trait(name: "Hash", description: "Hash integration"),
         .trait(name: "Tagged", description: "Tagged integration"),
     ],
     dependencies: [
