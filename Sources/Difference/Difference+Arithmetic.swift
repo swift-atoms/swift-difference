@@ -1,6 +1,6 @@
-public import Magnitude
 public import Addition
 public import Cardinal
+public import Magnitude
 public import Polarity
 public import Property
 public import Subtraction

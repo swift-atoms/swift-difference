@@ -14,11 +14,14 @@ let package = Package(
     products: [
         .library(name: "Difference", targets: ["Difference"]),
 
-        .library(name: "Difference Foundation Integration", targets: ["Difference Foundation Integration"]),
+        .library(
+            name: "Difference Foundation Integration",
+            targets: ["Difference Foundation Integration"]
+        ),
         .library(name: "Difference Test Support", targets: ["Difference Test Support"]),
     ],
     traits: [
-        .trait(name: "Tagged", description: "Tagged integration"),
+        .trait(name: "Tagged", description: "Tagged integration")
     ],
     dependencies: [
         .package(
@@ -69,21 +72,24 @@ let package = Package(
             ],
             path: "Sources/Difference",
             swiftSettings: [
-                .define("SYNCHRONIZATION_AVAILABLE", .when(platforms: [.macOS, .iOS, .tvOS, .watchOS, .visionOS, .linux, .windows])),
+                .define(
+                    "SYNCHRONIZATION_AVAILABLE",
+                    .when(platforms: [.macOS, .iOS, .tvOS, .watchOS, .visionOS, .linux, .windows])
+                )
             ]
         ),
-        
+
         .target(
             name: "Difference Foundation Integration",
             dependencies: [
-                .target(name: "Difference"),
+                .target(name: "Difference")
             ],
             path: "Sources/Difference Foundation Integration"
         ),
         .target(
             name: "Difference Test Support",
             dependencies: [
-                .target(name: "Difference"),
+                .target(name: "Difference")
             ],
             path: "Tests/Support"
         ),
@@ -104,28 +110,40 @@ let package = Package(
             path: "Tests/Difference Tests",
             resources: [.copy("Fixtures")],
             swiftSettings: [
-                .define("SYNCHRONIZATION_AVAILABLE", .when(platforms: [.macOS, .iOS, .tvOS, .watchOS, .visionOS, .linux, .windows])),
+                .define(
+                    "SYNCHRONIZATION_AVAILABLE",
+                    .when(platforms: [.macOS, .iOS, .tvOS, .watchOS, .visionOS, .linux, .windows])
+                )
             ]
         ),
-        .testTarget(name: "Difference Checked Arithmetic Migration Tests", dependencies: [
-            .target(name: "Difference"),
-        ], path: "Tests/Difference Checked Arithmetic Migration Tests"),
-        .testTarget(name: "Difference Hash Migration Tests", dependencies: [
-            .target(name: "Difference"),
-        ], path: "Tests/Difference Hash Migration Tests"),
+        .testTarget(
+            name: "Difference Checked Arithmetic Migration Tests",
+            dependencies: [
+                .target(name: "Difference")
+            ],
+            path: "Tests/Difference Checked Arithmetic Migration Tests"
+        ),
+        .testTarget(
+            name: "Difference Hash Migration Tests",
+            dependencies: [
+                .target(name: "Difference")
+            ],
+            path: "Tests/Difference Hash Migration Tests"
+        ),
     ],
     swiftLanguageModes: [.v6]
 )
 
 for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
-    target.swiftSettings = (target.swiftSettings ?? []) + [
-        .strictMemorySafety(),
-        .enableUpcomingFeature("ExistentialAny"),
-        .enableUpcomingFeature("InternalImportsByDefault"),
-        .enableUpcomingFeature("MemberImportVisibility"),
-        .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
-        .enableUpcomingFeature("InferIsolatedConformances"),
-        .enableExperimentalFeature("Lifetimes"),
-        .treatAllWarnings(as: .error),
-    ]
+    target.swiftSettings =
+        (target.swiftSettings ?? []) + [
+            .strictMemorySafety(),
+            .enableUpcomingFeature("ExistentialAny"),
+            .enableUpcomingFeature("InternalImportsByDefault"),
+            .enableUpcomingFeature("MemberImportVisibility"),
+            .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+            .enableUpcomingFeature("InferIsolatedConformances"),
+            .enableExperimentalFeature("Lifetimes"),
+            .treatAllWarnings(as: .error),
+        ]
 }

@@ -48,4 +48,3 @@ public func >= <D: Carrier.`Protocol`, C: Carrier.`Protocol`>(lhs: C, rhs: D) ->
 where D.Underlying == Difference, C.Underlying == Cardinal, D.Domain == C.Domain {
     Difference.positive(.init(lhs.cardinal)) >= rhs.difference
 }
-

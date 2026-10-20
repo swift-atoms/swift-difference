@@ -5,9 +5,9 @@ import Tagged
 struct First: ~Copyable, ~Escapable {}
 
 #if MISMATCH_DOMAIN
-struct Second: ~Copyable, ~Escapable {}
+    struct Second: ~Copyable, ~Escapable {}
 #else
-typealias Second = First
+    typealias Second = First
 #endif
 
 let count = Tagged<Second, Cardinal>(Cardinal(UInt.max))

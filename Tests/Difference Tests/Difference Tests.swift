@@ -128,7 +128,12 @@ struct `Differences preserve signed magnitude domains and exact arithmetic` {
 
         for lhs in values {
             for rhs in values {
-                checkExact(lhs.add.exact, rhs, expected: int128(lhs) + int128(rhs), maximumMagnitude)
+                checkExact(
+                    lhs.add.exact,
+                    rhs,
+                    expected: int128(lhs) + int128(rhs),
+                    maximumMagnitude
+                )
                 checkExact(
                     lhs.subtract.exact,
                     rhs,

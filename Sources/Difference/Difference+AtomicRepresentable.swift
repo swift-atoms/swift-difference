@@ -1,20 +1,18 @@
 import Magnitude
+
 #if SYNCHRONIZATION_AVAILABLE
-public import Cardinal
+    public import Cardinal
 #endif
 
 #if SYNCHRONIZATION_AVAILABLE
-public import Polarity
+    public import Polarity
 #endif
 
 #if SYNCHRONIZATION_AVAILABLE
-public import Synchronization
+    public import Synchronization
 #endif
 
-
 #if SYNCHRONIZATION_AVAILABLE
-
-
 
     extension Difference: AtomicRepresentable {
 

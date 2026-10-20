@@ -45,7 +45,7 @@ struct `Difference adapters preserve signed offsets and exact representation` {
         defer { unsafe pointer.deallocate() }
 
         unsafe pointer.storeBytes(
-            of: UInt32(0xAABBCCDD),
+            of: UInt32(0xAABB_CCDD),
             toByteOffset: Offset(Difference(4)),
             as: UInt32.self
         )
@@ -58,15 +58,17 @@ struct `Difference adapters preserve signed offsets and exact representation` {
             fromByteOffset: Offset(Difference(4)),
             as: UInt32.self
         )
-        let mutableAdvancedMatches = unsafe pointer.advanced(
-            by: Offset(Difference(4))
-        ) == pointer + 4
-        let immutableAdvancedMatches = unsafe immutable.advanced(
-            by: Offset(Difference(4))
-        ) == immutable + 4
+        let mutableAdvancedMatches =
+            unsafe pointer.advanced(
+                by: Offset(Difference(4))
+            ) == pointer + 4
+        let immutableAdvancedMatches =
+            unsafe immutable.advanced(
+                by: Offset(Difference(4))
+            ) == immutable + 4
 
-        #expect(mutableValue == 0xAABBCCDD)
-        #expect(immutableValue == 0xAABBCCDD)
+        #expect(mutableValue == 0xAABB_CCDD)
+        #expect(immutableValue == 0xAABB_CCDD)
         #expect(mutableAdvancedMatches)
         #expect(immutableAdvancedMatches)
     }

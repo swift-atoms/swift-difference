@@ -1,8 +1,6 @@
 public import Cardinal
-public import Polarity
 public import Magnitude
-
-
+public import Polarity
 
 public struct Difference: Sendable {
     private let _polarity: Polarity
@@ -37,7 +35,6 @@ extension Difference {
     @inlinable
     public static var one: Self { .positive(Magnitude(Cardinal(1 as UInt))) }
 
-
     public var polarity: Polarity? {
         magnitude.value.rawValue == 0 ? nil : _polarity
     }
@@ -60,7 +57,6 @@ extension Difference {
         case overflow
         case unrepresentable
     }
-
 
     @inlinable
     public func intValue() throws(Error) -> Int {

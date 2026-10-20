@@ -1,6 +1,6 @@
 import Cardinal
-import Polarity
 import Magnitude
+import Polarity
 
 extension Difference: Swift::CustomStringConvertible {
 

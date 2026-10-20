@@ -1,3 +1,5 @@
+public import Carrier
+
 extension Swift::Int {
 
     @inlinable
@@ -9,8 +11,6 @@ extension Swift::Int {
         }
     }
 }
-
-public import Carrier
 
 extension Swift::Int {
     @inlinable

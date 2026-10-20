@@ -57,7 +57,8 @@ extension Property where Tag == Addition, Base: Carrier.`Protocol`, Base.Underly
     }
 }
 
-extension Property where Tag == Subtraction, Base: Carrier.`Protocol`, Base.Underlying == Difference {
+extension Property
+where Tag == Subtraction, Base: Carrier.`Protocol`, Base.Underlying == Difference {
 
     @inlinable
     public func exact(_ other: Base) throws(Difference.Error) -> Base {

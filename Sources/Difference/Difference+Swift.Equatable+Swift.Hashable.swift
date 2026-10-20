@@ -1,6 +1,6 @@
 public import Cardinal
-import Polarity
 public import Magnitude
+import Polarity
 
 extension Difference: Swift::Equatable, Swift::Hashable {
 

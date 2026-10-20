@@ -1,9 +1,9 @@
 import Cardinal
-import Polarity
 import Magnitude
+import Polarity
 
 #if !hasFeature(Embedded)
-extension Difference: Swift::Codable {
+    extension Difference: Swift::Codable {
 
         private enum CodingKeys: String, CodingKey {
             case polarity
@@ -19,7 +19,8 @@ extension Difference: Swift::Codable {
                 throw DecodingError.dataCorruptedError(
                     forKey: .polarity,
                     in: values,
-                    debugDescription: "Difference polarity must be nil exactly when magnitude is zero"
+                    debugDescription:
+                        "Difference polarity must be nil exactly when magnitude is zero"
                 )
             }
             self.init(
