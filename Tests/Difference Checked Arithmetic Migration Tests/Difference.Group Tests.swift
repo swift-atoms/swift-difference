@@ -1,14 +1,16 @@
 import Difference
 import Testing
 
-extension Difference {
+enum `Difference Tests` {}
+
+extension `Difference Tests` {
     @Suite("Difference Checked Arithmetic Migration Tests")
     struct Test {
         @Suite struct Unit {}
     }
 }
 
-extension Difference.Test.Unit {
+extension `Difference Tests`.Test.Unit {
     @Test
     func `identity is zero`() throws {
         #expect(Difference.zero.polarity == nil)
