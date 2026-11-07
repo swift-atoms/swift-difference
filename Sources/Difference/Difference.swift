@@ -78,3 +78,52 @@ extension Difference {
         }
     }
 }
+
+extension Difference: Swift::Comparable {
+
+    @inlinable
+    public static func < (lhs: Self, rhs: Self) -> Bool {
+        switch (lhs.polarity, rhs.polarity) {
+        case (.negative, .negative): return lhs.magnitude > rhs.magnitude
+        case (.negative, _): return true
+        case (nil, .positive): return true
+        case (nil, _): return false
+        case (.positive, .positive): return lhs.magnitude < rhs.magnitude
+        case (.positive, _): return false
+        }
+    }
+}
+
+extension Difference: Swift::CustomStringConvertible {
+
+    public var description: String {
+        switch polarity {
+        case .negative: return "-\(magnitude.value)"
+        case nil: return "0"
+        case .positive: return magnitude.value.description
+        }
+    }
+}
+
+extension Difference: Swift::Equatable, Swift::Hashable {
+
+    @inlinable
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.polarity == rhs.polarity && lhs.magnitude == rhs.magnitude
+    }
+
+    @inlinable
+    public borrowing func hash(into hasher: inout Hasher) {
+        hasher.combine(polarity)
+        hasher.combine(magnitude)
+    }
+}
+
+extension Difference: Swift::ExpressibleByIntegerLiteral {
+
+    @_disfavoredOverload
+    @inlinable
+    public init(integerLiteral value: Int) {
+        self.init(value)
+    }
+}
