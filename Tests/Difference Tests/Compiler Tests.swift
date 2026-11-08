@@ -2,9 +2,9 @@
     import Foundation
     import Testing
 
-enum `Compiler Tests` {}
+    enum `Compiler Tests` {}
 
-extension `Compiler Tests` {
+    extension `Compiler Tests` {
         @Suite struct `Count conversion requires the same domain` {
             @Test(arguments: [false, true])
             func `the compiler enforces the count domain`(mismatched: Bool) throws {
@@ -44,5 +44,5 @@ extension `Compiler Tests` {
                 #expect(!diagnostic.contains("no such module"))
             }
         }
-}
+    }
 #endif
