@@ -4,7 +4,7 @@ import Testing
 enum `Difference Tests` {}
 
 extension `Difference Tests` {
-    @Suite("Difference Checked Arithmetic Migration Tests")
+    @Suite
     struct Test {
         @Suite struct Unit {}
     }
