@@ -43,10 +43,10 @@ extension Difference {
 
     @inlinable
     public init(_ value: Int) {
-        if value < 0 {
-            self = .negative(Magnitude(Cardinal(value.magnitude)))
+        self = if value < 0 {
+            .negative(Magnitude(Cardinal(value.magnitude)))
         } else {
-            self = .positive(Magnitude(Cardinal(UInt(value))))
+            .positive(Magnitude(Cardinal(UInt(value))))
         }
     }
 }
